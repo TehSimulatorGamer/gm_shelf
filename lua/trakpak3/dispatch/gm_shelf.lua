@@ -458,13 +458,13 @@
 				"type": "block",
 				"x": 48.0,
 				"y": 39.0,
-				"block": "yard_to_left"
+				"block": "station_passing_to_tunnel_left"
 			},
 			{
 				"type": "block",
 				"x": 23.0,
 				"y": 45.0,
-				"block": "station_platform_to_station_main"
+				"block": "station_passing_to_tunnel_left"
 			},
 			{
 				"type": "block",
@@ -544,7 +544,7 @@
 				"y2": 41.0,
 				"color1": "255 95 0",
 				"x1": 29.0,
-				"block": "yard_to_left",
+				"block": "station_b_platform_to_yard",
 				"type": "blockline",
 				"x2": 39.0,
 				"weight": 3.0,
@@ -555,7 +555,7 @@
 				"y2": 43.0,
 				"color1": "255 95 0",
 				"x1": 27.0,
-				"block": "station_platform_to_station_main",
+				"block": "station_b_platform_to_station_platform",
 				"type": "blockline",
 				"x2": 39.0,
 				"weight": 3.0,
@@ -620,7 +620,7 @@
 				"type": "block",
 				"x": 12.0,
 				"y": 33.0,
-				"block": "colliery_a_to_garage"
+				"block": "main_to_docks"
 			},
 			{
 				"y1": 35.0,
@@ -808,7 +808,7 @@
 				"type": "block",
 				"x": 49.0,
 				"y": 31.0,
-				"block": "colliery_a_to_main_block"
+				"block": "docks_to_colliery_block"
 			},
 			{
 				"type": "block",
@@ -1145,31 +1145,31 @@
 				"type": "block",
 				"x": 22.0,
 				"y": 16.0,
-				"block": "colliery_to_bay"
+				"block": "main_to_bay"
 			},
 			{
 				"type": "block",
 				"x": 30.0,
 				"y": 13.0,
-				"block": "colliery_to_station"
+				"block": "station_b_platform_to_station_platform"
 			},
 			{
 				"type": "block",
 				"x": 33.0,
 				"y": 11.0,
-				"block": "shunter_to_main"
+				"block": "station_b_platform_to_station_main"
 			},
 			{
 				"type": "block",
 				"x": 29.0,
 				"y": 9.0,
-				"block": "shunter_b_to_siding_main"
+				"block": "station_b_platform_to_station_passing"
 			},
 			{
 				"type": "block",
 				"x": 3.0,
 				"y": 18.0,
-				"block": "bay_to_colliery_top"
+				"block": "siding_to_colliery"
 			},
 			{
 				"y1": 10.0,

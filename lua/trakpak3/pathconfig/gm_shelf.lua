@@ -16,8 +16,8 @@
 			"nextsignal": "garage_loop"
 		},
 		{
-			"speed": 5.0,
 			"divergence": true,
+			"block": "siding_to_colliery",
 			"switchlist": {
 				"far_siding": true,
 				"colliery_a": true,
@@ -26,17 +26,17 @@
 				"double_1_bottom": true,
 				"slip_double_1_bottom": true
 			},
-			"block": "siding_to_colliery"
+			"speed": 5.0
 		},
 		{
-			"speed": 5.0,
 			"divergence": true,
+			"block": "siding_to_shunter",
 			"switchlist": {
 				"far_siding": true,
 				"Double_2_bottom": true,
 				"double_1_bottom": true
 			},
-			"block": "siding_to_shunter"
+			"speed": 5.0
 		}
 	],
 	"main_station_siding_signal_to_main": [
@@ -56,18 +56,18 @@
 			"speed": 5.0
 		},
 		{
-			"divergence": true,
 			"block": "siding_to_shunter",
+			"speed": 5.0,
 			"switchlist": {
 				"far_siding": false,
 				"Double_2_bottom": true,
 				"double_1_bottom": false
 			},
-			"speed": 5.0
+			"divergence": true
 		},
 		{
-			"divergence": true,
 			"block": "siding_to_colliery",
+			"speed": 5.0,
 			"switchlist": {
 				"far_siding": false,
 				"colliery_a": true,
@@ -76,7 +76,7 @@
 				"double_1_bottom": true,
 				"slip_double_1_bottom": true
 			},
-			"speed": 5.0
+			"divergence": true
 		}
 	],
 	"station_b_to_docks": [
@@ -117,13 +117,13 @@
 			"nextsignal": "main_to_station"
 		},
 		{
-			"block": "main_to_docks_yard",
 			"speed": 5.0,
+			"divergence": true,
 			"switchlist": {
 				"area_2_loading_1": true,
 				"docks_b": false
 			},
-			"divergence": true
+			"block": "main_to_docks_yard"
 		}
 	],
 	"dwarf_4_to_main": [
@@ -141,13 +141,13 @@
 	],
 	"colliery_signal_to_main": [
 		{
-			"divergence": true,
 			"speed": 5.0,
+			"block": "colliery_to_bay",
 			"switchlist": {
 				"loading_siding_1": true,
 				"colliery_a": true
 			},
-			"block": "colliery_to_bay"
+			"divergence": true
 		},
 		{
 			"divergence": true,
@@ -188,8 +188,8 @@
 			"nextsignal": "main_station_siding_signal_to_main_to_tunnel"
 		},
 		{
-			"speed": 5.0,
 			"divergence": true,
+			"block": "colliery_to_siding",
 			"switchlist": {
 				"far_siding": true,
 				"colliery_a": true,
@@ -198,12 +198,13 @@
 				"double_1_bottom": true,
 				"slip_double_1_bottom": true
 			},
-			"block": "colliery_to_siding"
+			"speed": 5.0
 		}
 	],
 	"passing_loop_to_colliery": [
 		{
-			"divergence": false,
+			"block": "siding_to_shunter",
+			"divergence": true,
 			"switchlist": {
 				"Double_2_bottom": false,
 				"double_1_bottom": false
@@ -211,8 +212,8 @@
 			"speed": 5.0
 		},
 		{
-			"speed": 5.0,
 			"divergence": false,
+			"block": "station_siding_to_main",
 			"switchlist": {
 				"slip_double_1_bottom": true,
 				"colliery_a": false,
@@ -221,11 +222,11 @@
 				"double_1_bottom": true,
 				"loading_siding_1": false
 			},
-			"block": "main_to_colliery"
+			"speed": 5.0
 		},
 		{
-			"speed": 5.0,
-			"divergence": true,
+			"divergence": false,
+			"block": "siding_to_colliery",
 			"switchlist": {
 				"slip_double_1_bottom": true,
 				"colliery_a": true,
@@ -233,12 +234,12 @@
 				"double_1_bottom": true,
 				"loading_siding_1": false
 			},
-			"block": "main_to_colliery_top"
+			"speed": 5.0
 		}
 	],
 	"colliery_b_to_main": [
 		{
-			"block": "colliery_b_to_main_block",
+			"block": "docks_to_colliery_block",
 			"speed": 5.0,
 			"divergence": false,
 			"switchlist": {
@@ -250,20 +251,20 @@
 			"nextsignal": "main_to_station"
 		},
 		{
-			"block": "colliery_b_to_garage",
 			"speed": 5.0,
+			"divergence": true,
 			"switchlist": {
 				"loco_shed_turnoff": true,
 				"colliery_e": true,
 				"colliery_c": true,
 				"colliery_d": true
 			},
-			"divergence": true
+			"block": "docks_to_garage"
 		}
 	],
 	"colliery_a_to_main": [
 		{
-			"block": "colliery_a_to_main_block",
+			"block": "docks_to_colliery_block",
 			"speed": 5.0,
 			"divergence": false,
 			"switchlist": {
@@ -275,43 +276,72 @@
 			"nextsignal": "main_to_station"
 		},
 		{
-			"block": "colliery_a_to_garage",
 			"speed": 5.0,
+			"divergence": true,
 			"switchlist": {
 				"loco_shed_turnoff": true,
 				"colliery_e": false,
 				"colliery_c": true,
 				"colliery_d": true
 			},
-			"divergence": true
+			"block": "docks_to_garage"
 		}
 	],
 	"dwarf_1_to_main": [
 		{
+			"block": "garage_a",
 			"divergence": false,
 			"switchlist": {
-				"colliery_c": true,
 				"loco_shed_turnoff": true,
+				"docks_a": false,
+				"colliery_c": true,
 				"loco_shed_split": true,
 				"colliery_d": false
 			},
 			"speed": 5.0
+		},
+		{
+			"block": "garage_a",
+			"speed": 5.0,
+			"switchlist": {
+				"loco_shed_turnoff": true,
+				"colliery_d": false,
+				"colliery_c": true,
+				"loco_shed_split": true,
+				"docks_a": true
+			},
+			"divergence": false
 		}
 	],
 	"dwarf_2_to_main": [
 		{
-			"divergence": true,
+			"block": "garage_b",
+			"divergence": false,
 			"switchlist": {
-				"colliery_c": true,
 				"loco_shed_turnoff": true,
+				"docks_a": false,
+				"colliery_c": true,
 				"loco_shed_split": false,
 				"colliery_d": false
 			},
 			"speed": 5.0
+		},
+		{
+			"block": "garage_b",
+			"speed": 5.0,
+			"switchlist": {
+				"loco_shed_turnoff": true,
+				"colliery_d": false,
+				"colliery_c": true,
+				"loco_shed_split": false,
+				"docks_a": true
+			},
+			"divergence": false
 		}
 	],
 	"station_a_to_tunnel": [
 		{
+			"block": "station_b_platform_to_yard",
 			"speed": 5.0,
 			"switchlist": {
 				"loop_b": false,
@@ -352,8 +382,8 @@
 			"divergence": true,
 			"switchlist": {
 				"loop_d": true,
-				"loop_c": true,
 				"loop_a": false,
+				"loop_c": true,
 				"loop_switch": true
 			},
 			"nextsignal": "platform_to_colliery"
@@ -361,14 +391,14 @@
 	],
 	"main_to_station": [
 		{
-			"divergence": true,
 			"block": "main_to_bay",
+			"speed": 2.0,
 			"switchlist": {
 				"loading_siding_1": true,
 				"colliery_a": false,
 				"colliery_b": false
 			},
-			"speed": 2.0
+			"divergence": true
 		},
 		{
 			"block": "main_to_main_station_block",
@@ -412,8 +442,8 @@
 			"speed": 5.0
 		},
 		{
-			"block": "main_to_siding",
 			"speed": 5.0,
+			"divergence": true,
 			"switchlist": {
 				"loading_siding_1": false,
 				"colliery_a": false,
@@ -423,31 +453,31 @@
 				"double_1_bottom": true,
 				"slip_double_1_bottom": true
 			},
-			"divergence": true
+			"block": "main_to_siding"
 		}
 	],
 	"station_to_tunnel": [
 		{
-			"block": "station_to_tunnel_block_a",
+			"block": "station_passing_to_tunnel_left",
 			"nextsignal": "station_b_to_docks",
 			"divergence": false,
 			"switchlist": {
 				"loop_switch": true,
 				"loop_d": true,
-				"loop_c": true,
-				"loop_a": false
+				"loop_a": false,
+				"loop_c": true
 			},
 			"speed": 5.0
 		},
 		{
-			"block": "station_to_tunnel_block",
-			"speed": 5.0,
+			"divergence": false,
+			"block": "station_passing_to_tunnel_right",
 			"switchlist": {
 				"loop_switch": true,
 				"loop_c": false,
 				"loop_a": false
 			},
-			"divergence": false
+			"speed": 5.0
 		}
 	],
 	"docks_to_station_b": [
@@ -473,34 +503,11 @@
 			"nextsignal": "station_a_to_tunnel"
 		}
 	],
-	"main_station_siding_signal_to_main_to_tunnel": [
-		{
-			"block": "station_siding_to_siding",
-			"divergence": false,
-			"switchlist": {
-				"loco_shed_bottom": false
-			},
-			"speed": 2.0
-		},
-		{
-			"block": "station_siding_to_siding",
-			"nextsignal": "station_b_to_docks",
-			"divergence": false,
-			"switchlist": {
-				"loco_shed_bottom_2": true,
-				"loop_c": true,
-				"loco_shed_bottom": true,
-				"loop_switch": false,
-				"loop_d": true
-			},
-			"speed": 2.0
-		}
-	],
 	"yard_to_main": [
 		{
 			"divergence": false,
 			"nextsignal": "station_b_to_docks",
-			"block": "yard_to_left",
+			"block": "station_passing_to_tunnel_left",
 			"switchlist": {
 				"loop_b": false,
 				"loop_d": false
@@ -508,6 +515,7 @@
 			"speed": 5.0
 		},
 		{
+			"block": "station_passing_to_tunnel_right",
 			"speed": 5.0,
 			"switchlist": {
 				"loop_c": false,
@@ -520,22 +528,31 @@
 			"divergence": true
 		}
 	],
-	"station_b_to_tunnel": [
+	"main_station_siding_signal_to_main_to_tunnel": [
 		{
-			"block": "station_platform_to_yard",
-			"speed": 5.0,
+			"divergence": true,
+			"speed": 2.0,
 			"switchlist": {
-				"loop_b": true,
-				"loop_a": true,
-				"loop_c": false,
-				"loop_d": false
+				"loco_shed_bottom": false
 			},
-			"divergence": true
+			"block": "station_siding_to_siding"
 		},
 		{
-			"block": "station_platform_to_station_passing",
-			"speed": 5.0,
+			"block": "station_passing_to_tunnel_left",
+			"nextsignal": "station_b_to_docks",
 			"divergence": false,
+			"switchlist": {
+				"loco_shed_bottom_2": true,
+				"loop_c": true,
+				"loco_shed_bottom": true,
+				"loop_switch": false,
+				"loop_d": true
+			},
+			"speed": 5.0
+		},
+		{
+			"block": "station_passing_to_tunnel_right",
+			"speed": 5.0,
 			"switchlist": {
 				"loco_shed_bottom_2": true,
 				"loop_c": false,
@@ -543,43 +560,86 @@
 				"loop_switch": false,
 				"loop_a": false
 			},
-			"nextsignal": "main_station_siding_signal"
-		},
+			"divergence": false
+		}
+	],
+	"dwarf_shunter_1": [
 		{
-			"block": "station_platform_to_station_main",
+			"block": "shunter_b_to_siding_main",
+			"nextsignal": "main_station_siding_signal",
+			"divergence": false,
+			"switchlist": {
+				"loco_shed_bottom": false
+			},
+			"speed": 2.0
+		}
+	],
+	"garage_loop": [
+		{
+			"block": "main_to_docks",
 			"speed": 5.0,
 			"divergence": false,
 			"switchlist": {
-				"loop_switch": false,
-				"loop_a": false,
-				"loop_c": false,
-				"loco_shed_bottom_2": false
+				"colliery_c": false,
+				"colliery_d": false,
+				"docks_a": true
 			},
-			"nextsignal": "passing_loop_to_colliery"
+			"nextsignal": "docks_to_station_b"
 		},
 		{
-			"block": "station_platform_to_station_platform",
+			"divergence": true,
+			"block": "main_to_colliery_a",
+			"switchlist": {
+				"colliery_e": true,
+				"colliery_c": true,
+				"colliery_d": true
+			},
+			"speed": 5.0
+		},
+		{
 			"speed": 5.0,
 			"divergence": true,
 			"switchlist": {
-				"loop_switch": true,
-				"loop_a": false,
-				"loop_c": false
+				"colliery_e": false,
+				"colliery_c": false,
+				"colliery_d": true
 			},
-			"nextsignal": "platform_to_colliery"
+			"block": "main_to_colliery_b"
+		}
+	],
+	"bay_platform_to_main": [
+		{
+			"block": "station_siding_to_main",
+			"nextsignal": "garage_loop",
+			"divergence": false,
+			"switchlist": {
+				"loading_siding_1": true,
+				"colliery_a": false,
+				"colliery_b": true
+			},
+			"speed": 5.0
+		},
+		{
+			"block": "siding_to_colliery",
+			"divergence": true,
+			"switchlist": {
+				"loading_siding_1": true,
+				"colliery_a": true
+			},
+			"speed": 5.0
 		}
 	],
 	"main_to_tunnel": [
 		{
-			"block": "station_passing_to_tunnel_a",
 			"speed": 2.0,
+			"divergence": false,
 			"switchlist": {
 				"loco_shed_bottom_2": false,
-				"loop_a": false,
 				"loop_c": false,
+				"loop_a": false,
 				"loop_switch": false
 			},
-			"divergence": false
+			"block": "station_passing_to_tunnel_a"
 		},
 		{
 			"block": "station_passing_to_tunnel",
@@ -595,71 +655,53 @@
 			"speed": 5.0
 		}
 	],
-	"bay_platform_to_main": [
+	"station_b_to_tunnel": [
 		{
-			"block": "bay_to_colliery",
-			"nextsignal": "garage_loop",
-			"divergence": false,
-			"switchlist": {
-				"loading_siding_1": true,
-				"colliery_a": false,
-				"colliery_b": true
-			},
-			"speed": 5.0
-		},
-		{
-			"block": "bay_to_colliery_top",
-			"nextsignal": "garage_loop",
+			"speed": 5.0,
 			"divergence": true,
 			"switchlist": {
-				"loading_siding_1": true,
-				"colliery_a": true
+				"loop_b": true,
+				"loop_c": false,
+				"loop_a": true,
+				"loop_d": false
 			},
-			"speed": 5.0
-		}
-	],
-	"garage_loop": [
+			"block": "station_b_platform_to_yard"
+		},
 		{
-			"block": "main_to_docks",
+			"block": "station_b_platform_to_station_passing",
 			"speed": 5.0,
 			"divergence": false,
 			"switchlist": {
-				"colliery_c": true,
-				"colliery_d": false,
-				"docks_a": true
+				"loco_shed_bottom_2": true,
+				"loop_c": false,
+				"loco_shed_bottom": true,
+				"loop_switch": false,
+				"loop_a": false
 			},
-			"nextsignal": "docks_to_station_b"
+			"nextsignal": "main_station_siding_signal"
 		},
 		{
-			"block": "main_to_colliery_a",
+			"block": "station_b_platform_to_station_main",
 			"speed": 5.0,
-			"switchlist": {
-				"colliery_e": true,
-				"colliery_c": true,
-				"colliery_d": true
-			},
-			"divergence": true
-		},
-		{
-			"block": "main_to_colliery_b",
-			"speed": 5.0,
-			"switchlist": {
-				"colliery_e": false,
-				"colliery_c": false,
-				"colliery_d": true
-			},
-			"divergence": true
-		}
-	],
-	"dwarf_shunter_1": [
-		{
-			"block": "shunter_b_to_siding_main",
-			"nextsignal": "main_station_siding_signal",
 			"divergence": false,
 			"switchlist": {
-				"loco_shed_bottom": false
+				"loop_switch": false,
+				"loop_c": false,
+				"loop_a": false,
+				"loco_shed_bottom_2": false
 			},
-			"speed": 2.0
+			"nextsignal": "passing_loop_to_colliery"
+		},
+		{
+			"block": "station_b_platform_to_station_platform",
+			"speed": 5.0,
+			"divergence": true,
+			"switchlist": {
+				"loop_switch": true,
+				"loop_a": false,
+				"loop_c": false
+			},
+			"nextsignal": "platform_to_colliery"
 		}
 	],
 	"docks_to_colliery": [
@@ -676,20 +718,20 @@
 			"speed": 5.0
 		},
 		{
-			"block": "docks_to_garage",
 			"speed": 5.0,
+			"divergence": true,
 			"switchlist": {
 				"colliery_d": false,
 				"colliery_c": true,
 				"loco_shed_turnoff": true,
 				"docks_a": false
 			},
-			"divergence": true
+			"block": "docks_to_garage"
 		}
 	],
 	"platform_to_colliery": [
 		{
-			"block": "station_to_colliery_top",
+			"block": "station_siding_to_main",
 			"nextsignal": "garage_loop",
 			"divergence": false,
 			"switchlist": {
@@ -701,14 +743,14 @@
 			"speed": 5.0
 		},
 		{
-			"speed": 5.0,
 			"divergence": true,
+			"block": "siding_to_colliery",
 			"switchlist": {
 				"slip_double_1_bottom": false,
 				"colliery_a": true,
 				"loading_siding_1": false
 			},
-			"block": "station_to_colliery"
+			"speed": 5.0
 		}
 	],
 	"dwarf_3_to_main": [
@@ -734,14 +776,14 @@
 			"speed": 5.0
 		},
 		{
-			"block": "shunter_to_siding",
 			"speed": 5.0,
+			"divergence": true,
 			"switchlist": {
 				"far_siding": false,
 				"Double_2_bottom": true,
 				"double_1_bottom": false
 			},
-			"divergence": true
+			"block": "shunter_to_siding"
 		}
 	]
 }

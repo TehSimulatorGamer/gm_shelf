@@ -1,16 +1,103 @@
 {
 	"panels": {
-		"nodes": {
-			"1": {
+		"nodes": [
+			{
 				"icon": "icon16/bullet_go.png",
-				"nextnode": 2.0,
+				"nextnode": 2,
 				"name": "START",
 				"canattach": true,
-				"parent": 1.0
+				"parent": 1
 			},
-			"2": {
-				"id_else": 4.0,
-				"id_then": 3.0,
+			{
+				"id_else": 4,
+				"id_then": 3,
+				"icon": "icon16/lightning.png",
+				"isconditional": true,
+				"conditions": [
+					"(",
+					"CTC",
+					"==",
+					"FORCE",
+					")",
+					"and",
+					"(",
+					"TAGS.standard",
+					")",
+					"and",
+					"(",
+					"not",
+					"DIVERGING",
+					")"
+				],
+				"parent": 1,
+				"name": "IF ( CTC == FORCE ) and ( TAGS.standard ) and ( not DIVERGING )"
+			},
+			{
+				"icon": "icon16/monitor_add.png",
+				"nextnode": 5,
+				"name": "THEN",
+				"canattach": true,
+				"parent": 2
+			},
+			{
+				"icon": "icon16/monitor_delete.png",
+				"nextnode": 6,
+				"name": "ELSE",
+				"canattach": true,
+				"parent": 2
+			},
+			{
+				"icon": "icon16/book_open.png",
+				"aspect": "Associated position light - Proceed",
+				"parent": 3,
+				"name": "Associated position light - Proceed"
+			},
+			{
+				"id_else": 8,
+				"id_then": 7,
+				"icon": "icon16/lightning.png",
+				"isconditional": true,
+				"conditions": [
+					"(",
+					"CTC",
+					"==",
+					"FORCE",
+					")",
+					"and",
+					"(",
+					"TAGS.standard",
+					")",
+					"and",
+					"(",
+					"DIVERGING",
+					")"
+				],
+				"parent": 4,
+				"name": "IF ( CTC == FORCE ) and ( TAGS.standard ) and ( DIVERGING )"
+			},
+			{
+				"icon": "icon16/monitor_add.png",
+				"nextnode": 9,
+				"name": "THEN",
+				"canattach": true,
+				"parent": 6
+			},
+			{
+				"icon": "icon16/monitor_delete.png",
+				"nextnode": 10,
+				"name": "ELSE",
+				"canattach": true,
+				"parent": 6
+			},
+			{
+				"icon": "icon16/book_open.png",
+				"aspect": "Associated position light - Diverging",
+				"parent": 7,
+				"name": "Associated position light - Diverging"
+			},
+			{
+				"id_else": 12,
+				"id_then": 11,
 				"icon": "icon16/lightning.png",
 				"isconditional": true,
 				"conditions": [
@@ -30,326 +117,246 @@
 					"STOP/DANGER",
 					")"
 				],
-				"parent": 1.0,
+				"parent": 8,
 				"name": "IF ( CTC == HOLD ) or ( OCCUPIED ) or ( SPEED == STOP/DANGER )"
 			},
-			"3": {
+			{
 				"icon": "icon16/monitor_add.png",
-				"nextnode": 5.0,
+				"nextnode": 13,
 				"name": "THEN",
 				"canattach": true,
-				"parent": 2.0
+				"parent": 10
 			},
-			"4": {
+			{
 				"icon": "icon16/monitor_delete.png",
-				"nextnode": 6.0,
+				"nextnode": 14,
 				"name": "ELSE",
 				"canattach": true,
-				"parent": 2.0
+				"parent": 10
 			},
-			"5": {
+			{
 				"icon": "icon16/book_open.png",
 				"aspect": "Danger",
-				"parent": 3.0,
+				"parent": 11,
 				"name": "Danger"
 			},
-			"6": {
-				"id_else": 8.0,
-				"id_then": 7.0,
+			{
+				"id_else": 16,
+				"id_then": 15,
 				"icon": "icon16/lightning.png",
 				"isconditional": true,
 				"conditions": [
 					"(",
-					"NEXTSPEED",
-					"==",
-					"STOP/DANGER",
+					"TAGS.standard",
 					")",
-					"or",
+					"and",
 					"(",
 					"DIVERGING",
 					")"
 				],
-				"parent": 4.0,
-				"name": "IF ( NEXTSPEED == STOP/DANGER ) or ( DIVERGING )"
+				"parent": 12,
+				"name": "IF ( TAGS.standard ) and ( DIVERGING )"
 			},
-			"7": {
+			{
 				"icon": "icon16/monitor_add.png",
-				"nextnode": 9.0,
+				"nextnode": 17,
 				"name": "THEN",
 				"canattach": true,
-				"parent": 6.0
+				"parent": 14
 			},
-			"8": {
+			{
 				"icon": "icon16/monitor_delete.png",
-				"nextnode": 10.0,
+				"nextnode": 18,
 				"name": "ELSE",
 				"canattach": true,
-				"parent": 6.0
+				"parent": 14
 			},
-			"9": {
+			{
 				"icon": "icon16/book_open.png",
-				"aspect": "Aproach",
-				"parent": 7.0,
-				"name": "Aproach"
+				"aspect": "Approach Diverging",
+				"parent": 15,
+				"name": "Approach Diverging"
 			},
-			"10": {
-				"id_else": 12.0,
-				"id_then": 11.0,
+			{
+				"id_else": 20,
+				"id_then": 19,
 				"icon": "icon16/lightning.png",
 				"isconditional": true,
 				"conditions": [
 					"(",
-					"NEXTSPEED",
+					"NEXTASPECT",
 					"==",
-					"SLOW",
+					"\"Danger\"",
+					")",
+					"and",
+					"(",
+					"TAGS.standard",
+					")",
+					"or",
+					"(",
+					"NEXTASPECT",
+					"==",
+					"\"Limit",
+					"of",
+					"shunt\"",
 					")",
 					"and",
 					"(",
 					"TAGS.standard",
 					")"
 				],
-				"parent": 8.0,
-				"name": "IF ( NEXTSPEED == SLOW ) and ( TAGS.standard )"
+				"parent": 16,
+				"name": "IF ( NEXTASPECT == \"Danger\" ) and ( TAGS.standard ) or ( NEXTASPECT == \"Limit of shunt\" ) and ( TAGS.standard )"
 			},
-			"11": {
+			{
 				"icon": "icon16/monitor_add.png",
-				"nextnode": 13.0,
+				"nextnode": 21,
 				"name": "THEN",
 				"canattach": true,
-				"parent": 10.0
+				"parent": 18
 			},
-			"12": {
+			{
 				"icon": "icon16/monitor_delete.png",
-				"nextnode": 15.0,
+				"nextnode": 22,
 				"name": "ELSE",
 				"canattach": true,
-				"parent": 10.0
+				"parent": 18
 			},
-			"13": {
+			{
 				"icon": "icon16/book_open.png",
-				"aspect": "Proceed",
-				"parent": 11.0,
-				"name": "Proceed"
+				"aspect": "Approach",
+				"parent": 19,
+				"name": "Approach"
 			},
-			"15": {
-				"id_else": 17.0,
-				"id_then": 16.0,
+			{
+				"id_else": 24,
+				"id_then": 23,
 				"icon": "icon16/lightning.png",
 				"isconditional": true,
 				"conditions": [
+					"(",
+					"NEXTASPECT",
+					"==",
+					"\"Approach\"",
+					")",
+					"and",
+					"(",
+					"TAGS.standard",
+					")",
+					"or",
+					"(",
+					"SPEED",
+					"==",
+					"FULL",
+					")"
+				],
+				"parent": 20,
+				"name": "IF ( NEXTASPECT == \"Approach\" ) and ( TAGS.standard ) or ( SPEED == FULL )"
+			},
+			{
+				"icon": "icon16/monitor_add.png",
+				"nextnode": 25,
+				"name": "THEN",
+				"canattach": true,
+				"parent": 22
+			},
+			{
+				"icon": "icon16/monitor_delete.png",
+				"nextnode": 26,
+				"name": "ELSE",
+				"canattach": true,
+				"parent": 22
+			},
+			{
+				"icon": "icon16/book_open.png",
+				"aspect": "Proceed",
+				"parent": 23,
+				"name": "Proceed"
+			},
+			{
+				"id_else": 28,
+				"id_then": 27,
+				"icon": "icon16/lightning.png",
+				"isconditional": true,
+				"conditions": [
+					"(",
+					"not",
+					"OCCUPIED",
+					")",
+					"and",
 					"(",
 					"TAGS.shunt",
 					")"
 				],
-				"parent": 12.0,
-				"name": "IF ( TAGS.shunt )"
+				"parent": 24,
+				"name": "IF ( not OCCUPIED ) and ( TAGS.shunt )"
 			},
-			"16": {
+			{
 				"icon": "icon16/monitor_add.png",
-				"nextnode": 18.0,
+				"nextnode": 29,
 				"name": "THEN",
 				"canattach": true,
-				"parent": 15.0
+				"parent": 26
 			},
-			"17": {
+			{
 				"icon": "icon16/monitor_delete.png",
-				"nextnode": 19.0,
+				"nextnode": 30,
 				"name": "ELSE",
 				"canattach": true,
-				"parent": 15.0
+				"parent": 26
 			},
-			"18": {
+			{
 				"icon": "icon16/book_open.png",
-				"aspect": "Aproach",
-				"parent": 16.0,
-				"name": "Aproach"
+				"aspect": "Ground position light - Proceed",
+				"parent": 27,
+				"name": "Ground position light - Proceed"
 			},
-			"19": {
-				"icon": "icon16/book_open.png",
-				"aspect": "Proceed",
-				"parent": 17.0,
-				"name": "Proceed"
-			},
-			"20": {
-				"icon": "icon16/monitor_delete.png",
-				"nextnode": 22.0,
-				"parent": 18.0,
-				"canattach": true,
-				"name": "ELSE"
-			},
-			"21": {
-				"name": "Approach",
-				"parent": 19.0,
-				"icon": "icon16/book_open.png",
-				"aspect": "Approach"
-			},
-			"22": {
-				"name": "Approach",
-				"parent": 20.0,
-				"icon": "icon16/book_open.png",
-				"aspect": "Approach"
-			},
-			"25": {
-				"parent": 24.0,
-				"canattach": true,
-				"icon": "icon16/monitor_add.png",
-				"name": "THEN"
-			},
-			"26": {
-				"parent": 24.0,
-				"canattach": true,
-				"icon": "icon16/monitor_delete.png",
-				"name": "ELSE"
-			},
-			"28": {
-				"icon": "icon16/monitor_add.png",
-				"nextnode": 30.0,
-				"parent": 27.0,
-				"canattach": true,
-				"name": "THEN"
-			},
-			"29": {
-				"parent": 27.0,
-				"canattach": true,
-				"icon": "icon16/monitor_delete.png",
-				"name": "ELSE"
-			},
-			"30": {
-				"name": "Approach",
-				"parent": 28.0,
-				"icon": "icon16/book_open.png",
-				"aspect": "Approach"
-			},
-			"32": {
-				"icon": "icon16/monitor_add.png",
-				"nextnode": 34.0,
-				"parent": 31.0,
-				"canattach": true,
-				"name": "THEN"
-			},
-			"33": {
-				"icon": "icon16/monitor_delete.png",
-				"nextnode": 35.0,
-				"parent": 31.0,
-				"canattach": true,
-				"name": "ELSE"
-			},
-			"34": {
-				"name": "Proceed",
-				"parent": 32.0,
-				"icon": "icon16/book_open.png",
-				"aspect": "Proceed"
-			},
-			"35": {
-				"name": "Proceed",
-				"parent": 33.0,
-				"icon": "icon16/book_open.png",
-				"aspect": "Proceed"
-			},
-			"37": {
-				"parent": 12.0,
-				"condition": [],
+			{
+				"id_else": 32,
+				"id_then": 31,
 				"icon": "icon16/lightning.png",
-				"id_then": 38.0,
+				"isconditional": true,
 				"conditions": [
 					"(",
-					"NEXTSPEED",
-					"==",
-					"SLOW",
+					"TAGS.los",
 					")",
 					"and",
 					"(",
-					"TAGS.standard",
+					"CTC",
+					"==",
+					"HOLD",
 					")"
 				],
-				"name": "IF ( NEXTSPEED == SLOW ) and ( TAGS.standard )",
-				"id_else": 39.0,
-				"isconditional": true
+				"parent": 28,
+				"name": "IF ( TAGS.los ) and ( CTC == HOLD )"
 			},
-			"38": {
+			{
 				"icon": "icon16/monitor_add.png",
-				"nextnode": 55.0,
-				"parent": 37.0,
+				"nextnode": 33,
+				"name": "THEN",
 				"canattach": true,
-				"name": "THEN"
+				"parent": 30
 			},
-			"39": {
+			{
 				"icon": "icon16/monitor_delete.png",
-				"nextnode": 56.0,
-				"parent": 37.0,
+				"nextnode": 34,
+				"name": "ELSE",
 				"canattach": true,
-				"name": "ELSE"
+				"parent": 30
 			},
-			"42": {
-				"name": "Danger",
-				"parent": 3.0,
+			{
 				"icon": "icon16/book_open.png",
-				"aspect": "Danger"
+				"aspect": "Limit of shunt",
+				"parent": 31,
+				"name": "Limit of shunt"
 			},
-			"43": {
-				"name": "Aproach",
-				"parent": 11.0,
+			{
 				"icon": "icon16/book_open.png",
-				"aspect": "Aproach"
-			},
-			"46": {
-				"icon": "icon16/monitor_add.png",
-				"nextnode": 48.0,
-				"parent": 45.0,
-				"canattach": true,
-				"name": "THEN"
-			},
-			"47": {
-				"parent": 45.0,
-				"canattach": true,
-				"icon": "icon16/monitor_delete.png",
-				"name": "ELSE"
-			},
-			"48": {
-				"name": "Aproach",
-				"parent": 46.0,
-				"icon": "icon16/book_open.png",
-				"aspect": "Aproach"
-			},
-			"50": {
-				"icon": "icon16/monitor_add.png",
-				"nextnode": 52.0,
-				"parent": 49.0,
-				"canattach": true,
-				"name": "THEN"
-			},
-			"51": {
-				"icon": "icon16/monitor_delete.png",
-				"nextnode": 53.0,
-				"parent": 49.0,
-				"canattach": true,
-				"name": "ELSE"
-			},
-			"52": {
-				"name": "Proceed",
-				"parent": 50.0,
-				"icon": "icon16/book_open.png",
-				"aspect": "Proceed"
-			},
-			"53": {
-				"name": "Proceed",
-				"parent": 51.0,
-				"icon": "icon16/book_open.png",
-				"aspect": "Proceed"
-			},
-			"55": {
-				"name": "Proceed",
-				"parent": 38.0,
-				"icon": "icon16/book_open.png",
-				"aspect": "Proceed"
-			},
-			"56": {
-				"name": "Aproach",
-				"parent": 39.0,
-				"icon": "icon16/book_open.png",
-				"aspect": "Aproach"
+				"aspect": "Proceed",
+				"parent": 32,
+				"name": "Proceed"
 			}
-		}
+		]
 	},
 	"sigtypes": {
 		"tri_color": {
@@ -360,22 +367,103 @@
 				"skin2": "",
 				"cycle3": "",
 				"skin3": "",
-				"bg2": "1",
+				"bg2": "0",
 				"cycle2": "",
-				"bg3": "1"
+				"bg3": "0"
 			},
-			"Aproach": {
+			"Approach Diverging": {
 				"cycle1": "",
 				"skin1": "",
 				"bg1": "4",
 				"skin2": "",
 				"cycle3": "",
 				"skin3": "",
-				"bg2": "4",
+				"bg2": "1",
 				"cycle2": "",
-				"bg3": "4"
+				"bg3": "0"
+			},
+			"Banner Approach Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Approach",
+				"bg3": ""
+			},
+			"Limit of shunt": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Danger",
+				"bg3": ""
 			},
 			"test": true,
+			"Associated position light - Proceed": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "0",
+				"cycle2": "",
+				"bg3": "1"
+			},
+			"Banner Proceed Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Proceed",
+				"bg3": ""
+			},
+			"Banner Danger repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Danger",
+				"bg3": ""
+			},
+			"Approach": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "4",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "0",
+				"cycle2": "",
+				"bg3": "0"
+			},
+			"Associated position light - Diverging": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "1",
+				"cycle2": "",
+				"bg3": "1"
+			},
 			"Proceed": {
 				"cycle1": "",
 				"skin1": "",
@@ -383,35 +471,144 @@
 				"skin2": "",
 				"cycle3": "",
 				"skin3": "",
-				"bg2": "6",
+				"bg2": "0",
 				"cycle2": "",
-				"bg3": "6"
+				"bg3": "0"
+			},
+			"Ground position light - Danger": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "0",
+				"bg2": "0",
+				"override": "Danger",
+				"cycle2": ""
+			},
+			"Ground position light - Proceed": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "1",
+				"bg2": "0",
+				"override": "Proceed",
+				"cycle2": ""
 			}
 		},
-		"dwarf": {
+		"limit": {
+			"Approach": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Limit of shunt",
+				"bg3": ""
+			},
+			"Approach Diverging": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Limit of shunt",
+				"bg3": ""
+			},
+			"Banner Approach Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Limit of shunt",
+				"bg3": ""
+			},
+			"Banner Danger repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Limit of shunt",
+				"bg3": ""
+			},
+			"test": true,
+			"Banner Proceed Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Limit of shunt",
+				"bg3": ""
+			},
+			"Associated position light - Proceed": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Limit of shunt",
+				"bg3": ""
+			},
+			"Limit of shunt": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "1",
+				"cycle2": "",
+				"bg3": "1"
+			},
 			"Danger": {
 				"cycle1": "",
 				"skin1": "",
-				"bg1": "1 0",
+				"bg1": "",
 				"skin2": "",
 				"cycle3": "",
 				"skin3": "",
-				"bg2": "1 0",
 				"cycle2": "",
-				"bg3": "1 0"
+				"bg2": "",
+				"override": "Limit of shunt",
+				"bg3": ""
 			},
-			"Aproach": {
+			"Associated position light - Diverging": {
 				"cycle1": "",
 				"skin1": "",
-				"bg1": "0 4",
+				"bg1": "",
 				"skin2": "",
 				"cycle3": "",
 				"skin3": "",
-				"bg2": "0 4",
 				"cycle2": "",
-				"bg3": "0 4"
+				"bg2": "",
+				"override": "Limit of shunt",
+				"bg3": ""
 			},
-			"test": true,
 			"Proceed": {
 				"cycle1": "",
 				"skin1": "",
@@ -421,16 +618,341 @@
 				"skin3": "",
 				"cycle2": "",
 				"bg2": "",
-				"override": "Aproach",
+				"override": "Limit of shunt",
 				"bg3": ""
+			},
+			"Ground position light - Danger": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Limit of shunt",
+				"bg3": ""
+			},
+			"Ground position light - Proceed": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Limit of shunt",
+				"bg3": ""
+			}
+		},
+		"banner": {
+			"Danger": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "0",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "0",
+				"bg2": "0",
+				"override": "Banner Danger repeat",
+				"cycle2": ""
+			},
+			"Approach Diverging": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "",
+				"bg2": "",
+				"override": "Banner Approach Repeat",
+				"cycle2": ""
+			},
+			"Banner Approach Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "1",
+				"bg3": "1",
+				"cycle2": ""
+			},
+			"Banner Danger repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "0",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "0",
+				"bg3": "0",
+				"cycle2": ""
+			},
+			"test": true,
+			"Banner Proceed Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "2",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "2",
+				"bg3": "2",
+				"cycle2": ""
+			},
+			"Limit of shunt": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "",
+				"bg2": "",
+				"override": "Banner Danger repeat",
+				"cycle2": ""
+			},
+			"Approach": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "1",
+				"bg2": "1",
+				"override": "Banner Approach Repeat",
+				"cycle2": ""
+			},
+			"Associated position light - Proceed": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Banner Approach Repeat",
+				"bg3": ""
+			},
+			"Associated position light - Diverging": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Banner Approach Repeat",
+				"bg3": ""
+			},
+			"Proceed": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "2",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "2",
+				"bg2": "2",
+				"override": "Banner Proceed Repeat",
+				"cycle2": ""
+			},
+			"Ground position light - Danger": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Banner Danger repeat",
+				"bg3": ""
+			},
+			"Ground position light - Proceed": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Banner Proceed Repeat",
+				"bg3": ""
+			}
+		},
+		"gpl": {
+			"Danger": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "1",
+				"override": "Ground position light - Danger",
+				"bg3": "1"
+			},
+			"Approach Diverging": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "2",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "2",
+				"bg2": "2",
+				"override": "Ground position light - Proceed",
+				"cycle2": ""
+			},
+			"Banner Approach Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "",
+				"bg2": "",
+				"override": "Ground position light - Proceed",
+				"cycle2": ""
+			},
+			"Banner Danger repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "",
+				"bg2": "",
+				"override": "Danger",
+				"cycle2": ""
+			},
+			"test": true,
+			"Approach": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "2",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "2",
+				"bg2": "2",
+				"override": "Ground position light - Proceed",
+				"cycle2": ""
+			},
+			"Associated position light - Proceed": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Ground position light - Proceed",
+				"bg3": ""
+			},
+			"Aproach": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "2",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "2",
+				"bg3": "2",
+				"cycle2": ""
+			},
+			"Limit of shunt": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "",
+				"bg2": "",
+				"override": "Danger",
+				"cycle2": ""
+			},
+			"Banner Proceed Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "",
+				"bg2": "",
+				"override": "Ground position light - Proceed",
+				"cycle2": ""
+			},
+			"Associated position light - Diverging": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Ground position light - Proceed",
+				"bg3": ""
+			},
+			"Proceed": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "2",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg3": "2",
+				"bg2": "2",
+				"override": "Ground position light - Proceed",
+				"cycle2": ""
+			},
+			"Ground position light - Danger": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "1",
+				"cycle2": "",
+				"bg3": "1"
+			},
+			"Ground position light - Proceed": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "2",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "2",
+				"bg3": "2",
+				"cycle2": ""
 			}
 		}
 	},
 	"tags": {
 		"standard": true,
-		"shunt": true
+		"shunt": true,
+		"los": true
 	},
-	"func_text": "function(OCCUPIED, DIVERGING, SPEED, NEXTASPECT, NEXTSPEED, TAGS, CTC, NEXTDIV)\n\tif ( ( CTC == 0 ) ) or ( ( OCCUPIED ) ) or ( ( SPEED == 0 ) ) then\n\t\treturn \"Danger\"\n\telse\n\t\tif ( ( NEXTSPEED == 0 ) ) or ( ( DIVERGING ) ) then\n\t\t\treturn \"Aproach\"\n\t\telse\n\t\t\tif ( ( NEXTSPEED == 2 ) and ( TAGS.standard ) ) then\n\t\t\t\treturn \"Proceed\"\n\t\t\telse\n\t\t\t\tif ( ( TAGS.shunt ) ) then\n\t\t\t\t\treturn \"Aproach\"\n\t\t\t\telse\n\t\t\t\t\treturn \"Proceed\"\n\t\t\t\tend\n\t\t\tend\n\t\tend\n\tend\nend",
+	"func_text": "function(OCCUPIED, DIVERGING, SPEED, NEXTASPECT, NEXTSPEED, TAGS, CTC, NEXTDIV)\n\tif ( ( CTC == 2 ) and ( TAGS.standard ) and ( not DIVERGING ) ) then\n\t\treturn \"Associated position light - Proceed\"\n\telse\n\t\tif ( ( CTC == 2 ) and ( TAGS.standard ) and ( DIVERGING ) ) then\n\t\t\treturn \"Associated position light - Diverging\"\n\t\telse\n\t\t\tif ( ( CTC == 0 ) ) or ( ( OCCUPIED ) ) or ( ( SPEED == 0 ) ) then\n\t\t\t\treturn \"Danger\"\n\t\t\telse\n\t\t\t\tif ( ( TAGS.standard ) and ( DIVERGING ) ) then\n\t\t\t\t\treturn \"Approach Diverging\"\n\t\t\t\telse\n\t\t\t\t\tif ( ( NEXTASPECT == \"Danger\" ) and ( TAGS.standard ) or ( NEXTASPECT == \"Limit of shunt\" ) and ( TAGS.standard ) ) then\n\t\t\t\t\t\treturn \"Approach\"\n\t\t\t\t\telse\n\t\t\t\t\t\tif ( ( NEXTASPECT == \"Approach\" ) and ( TAGS.standard ) or ( SPEED == FULL ) ) then\n\t\t\t\t\t\t\treturn \"Proceed\"\n\t\t\t\t\t\telse\n\t\t\t\t\t\t\tif ( ( not OCCUPIED ) and ( TAGS.shunt ) ) then\n\t\t\t\t\t\t\t\treturn \"Ground position light - Proceed\"\n\t\t\t\t\t\t\telse\n\t\t\t\t\t\t\t\tif ( ( TAGS.los ) and ( CTC == 0 ) ) then\n\t\t\t\t\t\t\t\t\treturn \"Limit of shunt\"\n\t\t\t\t\t\t\t\telse\n\t\t\t\t\t\t\t\t\treturn \"Proceed\"\n\t\t\t\t\t\t\t\tend\n\t\t\t\t\t\t\tend\n\t\t\t\t\t\tend\n\t\t\t\t\tend\n\t\t\t\tend\n\t\t\tend\n\t\tend\n\tend\nend",
 	"rules": [
 		{
 			"description": "Approach & stop at signal.",
@@ -439,16 +961,76 @@
 			"color": "Red"
 		},
 		{
-			"description": "Pass this signal, the next signal is at danger or you are required to proceed at a reduced speed.",
 			"speed": "SLOW",
-			"name": "Aproach",
-			"color": "Amber"
+			"color": "Amber",
+			"name": "Approach",
+			"description": "Pass this signal, the next signal is at danger or you are required to proceed at a reduced speed."
 		},
 		{
 			"description": "Proceed at line speed.",
 			"speed": "FULL",
 			"name": "Proceed",
 			"color": "Green"
+		},
+		{
+			"color": "Amber",
+			"description": "Pass this signal, a set of points along the way are set to change from the Main route, note the next signal could still be at danger, proceed at reduced speed until the next signal states otherwise. If a white light is illuminated above the signal this will indicate which way the points are set.\n",
+			"name": "Approach Diverging",
+			"speed": "MEDIUM"
+		},
+		{
+			"description": "This signal is not to be passed at any point unless instructed otherwise, this signal states the shunting limit.",
+			"speed": "STOP/DANGER",
+			"name": "Limit of shunt",
+			"color": "Red"
+		},
+		{
+			"speed": "STOP/DANGER",
+			"color": "Red",
+			"name": "Banner Danger repeat",
+			"description": "This banner is repeating the next signal aspect, this does not act as a signal only a remote repeater due to restricted view of the next signal, Approach & stop at signal."
+		},
+		{
+			"speed": "SLOW",
+			"color": "Amber",
+			"name": "Banner Approach Repeat",
+			"description": "This banner is repeating the next signal aspect, this does not act as a signal only a remote repeater due to restricted view of the next signal, Pass this signal, the next signal is at danger or you are required to proceed at a reduced speed."
+		},
+		{
+			"speed": "FULL",
+			"color": "Green",
+			"name": "Banner Proceed Repeat",
+			"description": "This banner is repeating the next signal aspect, this does not act as a signal only a remote repeater due to restricted view of the next signal, Proceed at line speed."
+		},
+		{
+			"speed": "SLOW",
+			"color": "Amber",
+			"name": "Banner Approach Repeat",
+			"description": "This banner is repeating the next signal aspect, this does not act as a signal only a remote repeater due to restricted view of the next signal, Proceed at line speed."
+		},
+		{
+			"color": "White",
+			"description": "This signal shows a proceed, move at a RESTRICTED speed to the next signal. Be cautious of pedestrians and other services.",
+			"name": "Ground position light - Proceed",
+			"speed": "RESTRICTED"
+		},
+		{
+			"color": "Red",
+			"description": "This signal shows a proceed, move at a RESTRICTED speed to the this signal. Be cautious of pedestrians and other services.",
+			"name": "Ground position light - Danger",
+			"speed": "STOP/DANGER"
+		},
+		{
+			"speed": "RESTRICTED",
+			"color": "White",
+			"name": "Associated position light - Proceed",
+			"description": "This signal is clear to pass at a crawling speed as there is another wagon or unit on the line ahead."
+		},
+		{
+			"speed": "RESTRICTED",
+			"color": "White",
+			"name": "Associated position light - Diverging",
+			"description": "This signal is clear to pass at a crawling speed as there is another wagon or unit on the line ahead, the line diverges ahead."
 		}
 	],
 	"sysname": "modern_uk"

@@ -5,6 +5,7 @@
 	"%tooltexture" "nature/blenddirtgrass005a_tooltexture"
         "$basetexturetransform" "center .5 .5 scale 1 1 rotate 0  translate 0 0"
         "$basetexturetransform2" "center .5 .5 scale 4 4 rotate 0 translate 0 0"
+	"%detailtype" "ah_tall_thick_grass1"
 	"$surfaceprop" "dirt"
 	"%keywords" "coastline"
 }

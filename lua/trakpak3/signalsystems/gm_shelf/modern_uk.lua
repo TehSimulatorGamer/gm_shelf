@@ -15,9 +15,18 @@
 				"isconditional": true,
 				"conditions": [
 					"(",
+					"OCCUPIED",
+					")",
+					"and",
+					"(",
 					"CTC",
 					"==",
 					"FORCE",
+					")",
+					"and",
+					"(",
+					"not",
+					"DIVERGING",
 					")",
 					"and",
 					"(",
@@ -25,12 +34,11 @@
 					")",
 					"and",
 					"(",
-					"not",
-					"DIVERGING",
+					"TAGS.apl",
 					")"
 				],
 				"parent": 1,
-				"name": "IF ( CTC == FORCE ) and ( TAGS.standard ) and ( not DIVERGING )"
+				"name": "IF ( OCCUPIED ) and ( CTC == FORCE ) and ( not DIVERGING ) and ( TAGS.standard ) and ( TAGS.apl )"
 			},
 			{
 				"icon": "icon16/monitor_add.png",
@@ -65,15 +73,27 @@
 					")",
 					"and",
 					"(",
-					"TAGS.standard",
+					"OCCUPIED",
 					")",
 					"and",
 					"(",
 					"DIVERGING",
+					")",
+					"and",
+					"(",
+					"TAGS.standard",
+					")",
+					"and",
+					"(",
+					"TAGS.feather",
+					")",
+					"and",
+					"(",
+					"TAGS.apl",
 					")"
 				],
 				"parent": 4,
-				"name": "IF ( CTC == FORCE ) and ( TAGS.standard ) and ( DIVERGING )"
+				"name": "IF ( CTC == FORCE ) and ( OCCUPIED ) and ( DIVERGING ) and ( TAGS.standard ) and ( TAGS.feather ) and ( TAGS.apl )"
 			},
 			{
 				"icon": "icon16/monitor_add.png",
@@ -152,10 +172,14 @@
 					"and",
 					"(",
 					"DIVERGING",
+					")",
+					"and",
+					"(",
+					"TAGS.feather",
 					")"
 				],
 				"parent": 12,
-				"name": "IF ( TAGS.standard ) and ( DIVERGING )"
+				"name": "IF ( TAGS.standard ) and ( DIVERGING ) and ( TAGS.feather )"
 			},
 			{
 				"icon": "icon16/monitor_add.png",
@@ -203,10 +227,16 @@
 					"and",
 					"(",
 					"TAGS.standard",
+					")",
+					"or",
+					"(",
+					"SPEED",
+					"==",
+					"SLOW",
 					")"
 				],
 				"parent": 16,
-				"name": "IF ( NEXTASPECT == \"Danger\" ) and ( TAGS.standard ) or ( NEXTASPECT == \"Limit of shunt\" ) and ( TAGS.standard )"
+				"name": "IF ( NEXTASPECT == \"Danger\" ) and ( TAGS.standard ) or ( NEXTASPECT == \"Limit of shunt\" ) and ( TAGS.standard ) or ( SPEED == SLOW )"
 			},
 			{
 				"icon": "icon16/monitor_add.png",
@@ -382,6 +412,18 @@
 				"cycle2": "",
 				"bg3": "0"
 			},
+			"Banner Approach Diverging Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Approach Diverging",
+				"bg3": ""
+			},
 			"Banner Approach Repeat": {
 				"cycle1": "",
 				"skin1": "",
@@ -394,7 +436,7 @@
 				"override": "Approach",
 				"bg3": ""
 			},
-			"Limit of shunt": {
+			"Banner Danger repeat": {
 				"cycle1": "",
 				"skin1": "",
 				"bg1": "",
@@ -418,6 +460,18 @@
 				"cycle2": "",
 				"bg3": "1"
 			},
+			"Limit of shunt": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"cycle2": "",
+				"bg2": "",
+				"override": "Danger",
+				"bg3": ""
+			},
 			"Banner Proceed Repeat": {
 				"cycle1": "",
 				"skin1": "",
@@ -428,18 +482,6 @@
 				"cycle2": "",
 				"bg2": "",
 				"override": "Proceed",
-				"bg3": ""
-			},
-			"Banner Danger repeat": {
-				"cycle1": "",
-				"skin1": "",
-				"bg1": "",
-				"skin2": "",
-				"cycle3": "",
-				"skin3": "",
-				"cycle2": "",
-				"bg2": "",
-				"override": "Danger",
 				"bg3": ""
 			},
 			"Approach": {
@@ -562,6 +604,17 @@
 				"override": "Limit of shunt",
 				"bg3": ""
 			},
+			"Limit of shunt": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "1",
+				"cycle2": "",
+				"bg3": "1"
+			},
 			"Associated position light - Proceed": {
 				"cycle1": "",
 				"skin1": "",
@@ -573,17 +626,6 @@
 				"bg2": "",
 				"override": "Limit of shunt",
 				"bg3": ""
-			},
-			"Limit of shunt": {
-				"cycle1": "",
-				"skin1": "",
-				"bg1": "1",
-				"skin2": "",
-				"cycle3": "",
-				"skin3": "",
-				"bg2": "1",
-				"cycle2": "",
-				"bg3": "1"
 			},
 			"Danger": {
 				"cycle1": "",
@@ -671,6 +713,17 @@
 				"override": "Banner Approach Repeat",
 				"cycle2": ""
 			},
+			"Banner Approach Diverging Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "1",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "4",
+				"bg3": "4",
+				"cycle2": ""
+			},
 			"Banner Approach Repeat": {
 				"cycle1": "",
 				"skin1": "",
@@ -678,31 +731,8 @@
 				"skin2": "",
 				"cycle3": "",
 				"skin3": "",
-				"bg2": "1",
-				"bg3": "1",
-				"cycle2": ""
-			},
-			"Banner Danger repeat": {
-				"cycle1": "",
-				"skin1": "",
-				"bg1": "0",
-				"skin2": "",
-				"cycle3": "",
-				"skin3": "",
-				"bg2": "0",
-				"bg3": "0",
-				"cycle2": ""
-			},
-			"test": true,
-			"Banner Proceed Repeat": {
-				"cycle1": "",
-				"skin1": "",
-				"bg1": "2",
-				"skin2": "",
-				"cycle3": "",
-				"skin3": "",
-				"bg2": "2",
-				"bg3": "2",
+				"bg2": "4",
+				"bg3": "4",
 				"cycle2": ""
 			},
 			"Limit of shunt": {
@@ -717,6 +747,18 @@
 				"override": "Banner Danger repeat",
 				"cycle2": ""
 			},
+			"test": true,
+			"Banner Danger repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "0",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "1",
+				"bg3": "1",
+				"cycle2": ""
+			},
 			"Approach": {
 				"cycle1": "",
 				"skin1": "",
@@ -727,6 +769,17 @@
 				"bg3": "1",
 				"bg2": "1",
 				"override": "Banner Approach Repeat",
+				"cycle2": ""
+			},
+			"Banner Proceed Repeat": {
+				"cycle1": "",
+				"skin1": "",
+				"bg1": "2",
+				"skin2": "",
+				"cycle3": "",
+				"skin3": "",
+				"bg2": "6",
+				"bg3": "6",
 				"cycle2": ""
 			},
 			"Associated position light - Proceed": {
@@ -948,11 +1001,13 @@
 		}
 	},
 	"tags": {
-		"standard": true,
 		"shunt": true,
-		"los": true
+		"standard": true,
+		"apl": true,
+		"los": true,
+		"feather": true
 	},
-	"func_text": "function(OCCUPIED, DIVERGING, SPEED, NEXTASPECT, NEXTSPEED, TAGS, CTC, NEXTDIV)\n\tif ( ( CTC == 2 ) and ( TAGS.standard ) and ( not DIVERGING ) ) then\n\t\treturn \"Associated position light - Proceed\"\n\telse\n\t\tif ( ( CTC == 2 ) and ( TAGS.standard ) and ( DIVERGING ) ) then\n\t\t\treturn \"Associated position light - Diverging\"\n\t\telse\n\t\t\tif ( ( CTC == 0 ) ) or ( ( OCCUPIED ) ) or ( ( SPEED == 0 ) ) then\n\t\t\t\treturn \"Danger\"\n\t\t\telse\n\t\t\t\tif ( ( TAGS.standard ) and ( DIVERGING ) ) then\n\t\t\t\t\treturn \"Approach Diverging\"\n\t\t\t\telse\n\t\t\t\t\tif ( ( NEXTASPECT == \"Danger\" ) and ( TAGS.standard ) or ( NEXTASPECT == \"Limit of shunt\" ) and ( TAGS.standard ) ) then\n\t\t\t\t\t\treturn \"Approach\"\n\t\t\t\t\telse\n\t\t\t\t\t\tif ( ( NEXTASPECT == \"Approach\" ) and ( TAGS.standard ) or ( SPEED == FULL ) ) then\n\t\t\t\t\t\t\treturn \"Proceed\"\n\t\t\t\t\t\telse\n\t\t\t\t\t\t\tif ( ( not OCCUPIED ) and ( TAGS.shunt ) ) then\n\t\t\t\t\t\t\t\treturn \"Ground position light - Proceed\"\n\t\t\t\t\t\t\telse\n\t\t\t\t\t\t\t\tif ( ( TAGS.los ) and ( CTC == 0 ) ) then\n\t\t\t\t\t\t\t\t\treturn \"Limit of shunt\"\n\t\t\t\t\t\t\t\telse\n\t\t\t\t\t\t\t\t\treturn \"Proceed\"\n\t\t\t\t\t\t\t\tend\n\t\t\t\t\t\t\tend\n\t\t\t\t\t\tend\n\t\t\t\t\tend\n\t\t\t\tend\n\t\t\tend\n\t\tend\n\tend\nend",
+	"func_text": "function(OCCUPIED, DIVERGING, SPEED, NEXTASPECT, NEXTSPEED, TAGS, CTC, NEXTDIV)\n\tif ( ( OCCUPIED ) and ( CTC == 2 ) and ( not DIVERGING ) and ( TAGS.standard ) and ( TAGS.apl ) ) then\n\t\treturn \"Associated position light - Proceed\"\n\telse\n\t\tif ( ( CTC == 2 ) and ( OCCUPIED ) and ( DIVERGING ) and ( TAGS.standard ) and ( TAGS.feather ) and ( TAGS.apl ) ) then\n\t\t\treturn \"Associated position light - Diverging\"\n\t\telse\n\t\t\tif ( ( CTC == 0 ) ) or ( ( OCCUPIED ) ) or ( ( SPEED == 0 ) ) then\n\t\t\t\treturn \"Danger\"\n\t\t\telse\n\t\t\t\tif ( ( TAGS.standard ) and ( DIVERGING ) and ( TAGS.feather ) ) then\n\t\t\t\t\treturn \"Approach Diverging\"\n\t\t\t\telse\n\t\t\t\t\tif ( ( NEXTASPECT == \"Danger\" ) and ( TAGS.standard ) or ( NEXTASPECT == \"Limit of shunt\" ) and ( TAGS.standard ) or ( SPEED == SLOW ) ) then\n\t\t\t\t\t\treturn \"Approach\"\n\t\t\t\t\telse\n\t\t\t\t\t\tif ( ( NEXTASPECT == \"Approach\" ) and ( TAGS.standard ) or ( SPEED == FULL ) ) then\n\t\t\t\t\t\t\treturn \"Proceed\"\n\t\t\t\t\t\telse\n\t\t\t\t\t\t\tif ( ( not OCCUPIED ) and ( TAGS.shunt ) ) then\n\t\t\t\t\t\t\t\treturn \"Ground position light - Proceed\"\n\t\t\t\t\t\t\telse\n\t\t\t\t\t\t\t\tif ( ( TAGS.los ) and ( CTC == 0 ) ) then\n\t\t\t\t\t\t\t\t\treturn \"Limit of shunt\"\n\t\t\t\t\t\t\t\telse\n\t\t\t\t\t\t\t\t\treturn \"Proceed\"\n\t\t\t\t\t\t\t\tend\n\t\t\t\t\t\t\tend\n\t\t\t\t\t\tend\n\t\t\t\t\tend\n\t\t\t\tend\n\t\t\tend\n\t\tend\n\tend\nend",
 	"rules": [
 		{
 			"description": "Approach & stop at signal.",
@@ -991,10 +1046,10 @@
 			"description": "This banner is repeating the next signal aspect, this does not act as a signal only a remote repeater due to restricted view of the next signal, Approach & stop at signal."
 		},
 		{
+			"description": "This banner is repeating the next signal aspect, this does not act as a signal only a remote repeater due to restricted view of the next signal, Pass this signal, a set of points along the way are set to change from the Main route, note the next signal could still be at danger, proceed at reduced speed until the next signal states otherwise. If a white light is illuminated above the signal this will indicate which way the points are set.\n",
 			"speed": "SLOW",
-			"color": "Amber",
-			"name": "Banner Approach Repeat",
-			"description": "This banner is repeating the next signal aspect, this does not act as a signal only a remote repeater due to restricted view of the next signal, Pass this signal, the next signal is at danger or you are required to proceed at a reduced speed."
+			"name": "Banner Approach Diverging Repeat",
+			"color": "Amber"
 		},
 		{
 			"speed": "FULL",
